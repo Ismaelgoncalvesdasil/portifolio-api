@@ -3,13 +3,13 @@
 // export async function deletete(req,res){
 //   openDb()
 //   .then(db => {
-//       db.all('DROP TABLE Entradas ')
+//       db.all('DROP TABLE Home ')
 //           .then(res = res)}
 //   )
 
 // //   openDb()
 // //   .then(db => {
-// //       db.all('DROP TABLE principal ')
+// //       db.all('DROP TABLE  ')
 // //           .then(res = res)}
 // //   )
 // }
