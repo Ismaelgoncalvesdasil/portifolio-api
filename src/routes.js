@@ -15,7 +15,7 @@ import {slectSobre,
 } from './Controllers/Sobre.js'
 
 import {
-  selectUsers, login, registe
+  selectAdm, login, registe
 } from './Controllers/Login.js';
 
 const router = Router();
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
   });
 });
 //Login
-router.get('/login', selectUsers)
+router.get('/login', selectAdm)
 router.post('/login', login)
 router.post('/register', registe)
 //Login

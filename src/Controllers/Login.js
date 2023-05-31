@@ -2,11 +2,11 @@ import { openDb } from "../configDB.js";
 import bcrypt from "bcrypt";
 const Rounds = 10;
 
-export async function selectUsers(req, res){
+export async function selectAdm(req, res){
     openDb()
       .then(db=>{
-       db.all('SELECT * FROM users')
-         .then(users=>res.json(users))
+       db.all('SELECT * FROM adm')
+         .then(adm=>res.json(adm))
     })
   }
 
@@ -15,7 +15,7 @@ export async function login(req, res){
   
   openDb()
   .then(db => {
-      db.all(`SELECT * FROM users WHERE email = ?`, [email])
+      db.all(`SELECT * FROM adm WHERE email = ?`, [email])
       .then((rows, err) =>{
           if(err){
               return res.json({err}); 
@@ -44,7 +44,7 @@ export async function registe(req, res){
     
     openDb()
     .then(db => {
-        db.all("SELECT * FROM users WHERE email = ?", [email])
+        db.all("SELECT * FROM adm WHERE email = ?", [email])
         .then((rows, err) => {
             if(err) {
                 res.send(err);
@@ -52,7 +52,7 @@ export async function registe(req, res){
             if(rows.length == 0) {
                 bcrypt.hash(senha, Rounds)
                 .then((hash, err) => {
-                db.run("INSERT INTO users (email, senha) VALUES (?,?)", [email, hash])
+                db.run("INSERT INTO adm (email, senha) VALUES (?,?)", [email, hash])
                 .then((response, error) => {
                     if (error) {
                         res.send(error);
