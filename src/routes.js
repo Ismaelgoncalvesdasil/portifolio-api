@@ -46,5 +46,6 @@ router.get('/sobre1/:id',slectSobre)
 router.post('/sobre',insertSobre)
 router.put('/sobre/:id',updateSobre)
 router.delete('/sobre/:id',deleteSobre)
+//Sobre
 
 export default router;
