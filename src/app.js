@@ -5,6 +5,7 @@ import https from 'https';
 import cors from 'cors';
 import { createTableHome } from './Models/Home.js';
 import { createTableUsers } from './Models/login.js';
+import { createTableSobre } from './Models/Sobre.js';
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use(router);
 
 createTableHome();
 createTableUsers();
+createTableSobre();
 
 app.listen(3000, () => console.log('API Rodando em http://localhost:3000'));
 

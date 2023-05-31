@@ -7,6 +7,13 @@ import { insertHome,
    deleteHome 
 } from './Controllers/Home.js';
 
+import {slectSobre,
+  updateSobre,
+  deleteSobre,
+  insertSobre,
+  slectSobres
+} from './Controllers/Sobre.js'
+
 import {
   selectUsers, login, registe
 } from './Controllers/Login.js';
@@ -25,12 +32,19 @@ router.post('/login', login)
 router.post('/register', registe)
 //Login
 
-// Entradas
+// Home
 router.get('/home',slectHomes)
 router.get('/home1/:id',slectHome)
 router.post('/home',insertHome)
 router.put('/home/:id',updateHome)
 router.delete('/home/:id',deleteHome)
-// Entradas
+// Home
+
+//Sobre
+router.get('/sobre',slectSobres)
+router.get('/sobre1/:id',slectSobre)
+router.post('/sobre',insertSobre)
+router.put('/sobre/:id',updateSobre)
+router.delete('/sobre/:id',deleteSobre)
 
 export default router;
