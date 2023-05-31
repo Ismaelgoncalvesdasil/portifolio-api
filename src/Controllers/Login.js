@@ -11,17 +11,17 @@ export async function selectUsers(req, res){
   }
 
 export async function login(req, res){
-  const {email_users, senha_users} = req.body;
+  const {email, senha} = req.body;
   
   openDb()
   .then(db => {
-      db.all(`SELECT * FROM users WHERE email_users = ?`, [email_users])
+      db.all(`SELECT * FROM users WHERE email = ?`, [email])
       .then((rows, err) =>{
           if(err){
               return res.json({err}); 
           } 
           if(rows.length > 0){ 
-              bcrypt.compare(senha_users, rows[0].senha_users)
+              bcrypt.compare(senha, rows[0].senha)
               .then((response, error) => {
                   if(error){
                       res.send(error)
@@ -40,19 +40,19 @@ export async function login(req, res){
   })
 };
 export async function registe(req, res){
-    const {email_users, senha_users} = req.body;
+    const {email, senha} = req.body;
     
     openDb()
     .then(db => {
-        db.all("SELECT * FROM users WHERE email_users = ?", [email_users])
+        db.all("SELECT * FROM users WHERE email = ?", [email])
         .then((rows, err) => {
             if(err) {
                 res.send(err);
             }
             if(rows.length == 0) {
-                bcrypt.hash(senha_users, Rounds)
+                bcrypt.hash(senha, Rounds)
                 .then((hash, err) => {
-                db.run("INSERT INTO users (email_users, senha_users) VALUES (?,?)", [email_users, hash])
+                db.run("INSERT INTO users (email, senha) VALUES (?,?)", [email, hash])
                 .then((response, error) => {
                     if (error) {
                         res.send(error);
